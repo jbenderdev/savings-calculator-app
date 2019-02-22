@@ -1,28 +1,40 @@
 import React from "react";
+import PercentWizard from "./PercentWizard"
+import DollarWizard from "./DollarWizard"
 
 class Wizards extends React.Component {
     constructor(props){
         super(props);
     }
-// getPercentWizards() {
-//     let wizardCount = []
-//     if (this.props.percentWizardCount ) {
-//        wizardCount.push()
-//     }
-//     if (stats.energy > 100) {
-//        badgeList.push(<i className="fa fa-times-circle" style={{color: "blue"}}></i>)
-//     }
-//     return wizardCount
-// }
-
-//     const getPercentWizards = ( {percentWizards} ) => {
-//     let wizards = {percentWizards};
-//     wizards.map();
-//     return wizards
-// };
 
     render() {
-        return "number of wizards:" + this.props.percentWizards
+        const percentWizNumber = Number(this.props.percentWizardCount.length)
+        const dollarWizNumber = Number(this.props.dollarWizardCount.length)
+        const percentWizardRender = this.props.percentWizardCount.map((wizNumber) =>
+            <div>
+                <PercentWizard key={percentWizNumber}/>
+            </div>
+        )
+        const dollarWizardRender = this.props.dollarWizardCount.map(() =>
+            <div>
+                <DollarWizard key={dollarWizNumber}/>
+            </div>
+        )
+
+        //create a function that inserts the wizNumber as an id in percentWizardRender's div
+        //create a function that inserts the wizNumber as an id in percentWizardRender's div
+
+        return (
+            <div>
+                <h2>2. Enter your pricing information:</h2>
+                <div>
+                    {percentWizardRender}
+                </div>
+                <div>
+                    {dollarWizardRender}
+                </div>
+            </div>
+        )
     }
 
     

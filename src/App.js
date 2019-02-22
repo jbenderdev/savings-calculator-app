@@ -7,47 +7,48 @@ import Calculators from "./components/FieldGenerator/Calculators";
 import "tachyons";
 import './App.css';
 
+const initialState = {
+  percentCalculators: {
+    total: []
+  },
+  dollarCalculators: {
+    total: []
+}
+}
+
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-    input: '',
-    percentCalculators: "",
-    dollarCalculators: "",
-    }
+    this.state = initialState;
   }
 
-//this function is active within the component; your error is inside addPercentField
-
-//   addPercentField = () => {
-//       return(
-//         <div>
-//           <PercentWizard />
-//         </div>
-//       )
-// }
-
-//this function is active within the component; your error is inside addDollarField
-
-//   addDollarField = () => {
-//     return(
-//       <div>
-//         <DollarWizard />
-//       </div>
-//     )
-// }
-
-  setPercentCount = (newPercentCount) => {
-    this.setState({percentCalculators: newPercentCount});
+  addPercentCalc = () => {
+    let perCalcLength = this.state.percentCalculators.total.length;
+    this.setState({percentCalculators: {total: [...this.state.percentCalculators.total, `perCalc${perCalcLength}`]}})
     console.log(this.state.percentCalculators)
   }
 
-  setDollarCount = (newDollarCount) => {
-    this.setState({dollarCalculators: newDollarCount});
+  //doesn't work correctly
+  removePercentCalc = () => {
+    let oldTotal = this.state.percentCalculators.total
+    this.setState({percentCalculators: {total: oldTotal.splice(-1, 1)}})
+    console.log(this.state.percentCalculators)
+  }
+  
+  addDollarCalc = () => {
+    let dolCalcLength = this.state.dollarCalculators.total.length;
+    this.setState({dollarCalculators: {total: [...this.state.dollarCalculators.total, `dolCalc${dolCalcLength}`]}})
     console.log(this.state.dollarCalculators)
   }
 
-//here's where the generator function will go, then the generator component will just inherit it OR you can just leave it here
+  //different approach, but still doesn't work correctly
+  removeDollarCalc = () => {
+    let oldTotal = this.state.dollarCalculators.total
+    let dolCalcLength = this.state.dollarCalculators.total.length
+    let valueToRemove = `dolCalc${dolCalcLength}`
+    this.setState({dollarCalculators: {total: oldTotal.filter(item => item !== valueToRemove)}})
+    console.log(this.state.dollarCalculators)
+  }
 
   render() {
     return (
@@ -55,13 +56,19 @@ class App extends Component {
         <Navigation />
         <Header />
         <div className="flex flex-wrap">
-          <div className="fl w-third tc br bw3">
-            <Generators className="fl w-third tc" setPercentCount={this.setPercentCount} setDollarCount={this.setDollarCount}/>
+          <div className="fl w-third tc">
+            <Generators
+              className="fl w-third tc"
+              setPercentCount={this.addPercentCalc}
+              setDollarCount={this.addDollarCalc}
+              undoPercentCount={this.removePercentCalc}
+              undoDollarCount={this.removeDollarCalc}
+              />
           </div>
           <div className="fl w-third tc">
-            <Wizards percentWizards={this.state.percentCalculators} dollarWizards={this.state.dollarWizards}/>
+            <Wizards percentWizardCount={this.state.percentCalculators.total} dollarWizardCount={this.state.dollarCalculators.total}/>
           </div>
-          <div className="fl w-third tc bl bw3">
+          <div className="fl w-third tc">
             <Calculators className="fl w-third tc" percentCalculators={this.state.percentCalculators} dollarWizards={this.state.dollarCalculators}/>
           </div>
         </div>
