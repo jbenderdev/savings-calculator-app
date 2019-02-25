@@ -1,18 +1,20 @@
 import React from "react";
 
 class Generators extends React.Component {
-    constructor(props){
-        super(props);
-    }
 
     render() {
     return (
-        <div className="ph5">
-            <h2>1. Add or remove calculators:</h2>
-            <button onClick={() => this.props.setPercentCount()}>Add percent calculator</button>
-            {/* <button onClick={() => this.props.undoPercentCount()}>Remove percent calculator</button> */}
-            <button onClick={() => this.props.setDollarCount()}>Add dollar calculator</button>
-            {/* <button onClick={() => this.props.undoDollarCount()}>Remove dollar calculator</button> */}
+        <div className="tc ph4">
+            <h2>1. Add / remove calculators:</h2>
+            <button
+                className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+                onClick={() => this.props.setPercentWizCount()}>Add percent calculator</button>
+            <button
+                className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+                onClick={() => this.props.setDollarWizCount()}>Add dollar calculator</button>
+            <button
+                className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-pink"
+                onClick={() => this.props.clearAll()}>Clear all calculators</button>
         </div>
     )
 }

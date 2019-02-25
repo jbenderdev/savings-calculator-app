@@ -1,27 +1,27 @@
 //build each possible input field (dollar amt, flat quantity, percentage) separately and then create them as elements onClick
-const setPercent = input.value
+// const setPercent = input.value
 
-const percentCalc = inputPercent => {
-    let a = inputPercent;
-    let b = setPercent;
-    if (a - b > 0) {
-        return a - b;
-    }
-    else {
-        return `Your current rate can't be beat!`
-    }
-}
+// const percentCalc = inputPercent => {
+//     let a = inputPercent;
+//     let b = setPercent;
+//     if (a - b > 0) {
+//         return a - b;
+//     }
+//     else {
+//         return `Your current rate can't be beat!`
+//     }
+// }
 
-const feeCalc = inputFee => {
-    let a = inputFee;
-    let b = setFee;
-    if (a - b > 0) {
-        return a - b;
-    }
-    else {
-        return `This fee is as low as it gets!`
-    }
-}
+// const feeCalc = inputFee => {
+//     let a = inputFee;
+//     let b = setFee;
+//     if (a - b > 0) {
+//         return a - b;
+//     }
+//     else {
+//         return `This fee is as low as it gets!`
+//     }
+// }
 
 //The above works as long as you set a num value for setPercent
 //Then hooking up to form inputs likely via id.input.value

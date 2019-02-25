@@ -3,29 +3,34 @@ import PercentWizard from "./PercentWizard"
 import DollarWizard from "./DollarWizard"
 
 class Wizards extends React.Component {
-    constructor(props){
-        super(props);
-    }
 
     render() {
-        const percentWizNumber = Number(this.props.percentWizardCount.length)
-        const dollarWizNumber = Number(this.props.dollarWizardCount.length)
-        const percentWizardRender = this.props.percentWizardCount.map((wizNumber) =>
-            <div>
-                <PercentWizard key={percentWizNumber}/>
+        const percentWizardRender = this.props.percentWizardCount.map((count, key) =>
+            <div id={count} key={key}>
+                <PercentWizard
+                onPerPromptChange={this.props.onPerPromptChange}
+                onRateChange={this.props.onRateChange}
+                perPromptState={this.props.perPromptState}
+                rateState={this.props.rateState}
+                wizardId={this.id}
+                />
             </div>
         )
-        const dollarWizardRender = this.props.dollarWizardCount.map(() =>
-            <div>
-                <DollarWizard key={dollarWizNumber}/>
+        const dollarWizardRender = this.props.dollarWizardCount.map((count, key) =>
+            <div id={count} key={key}>
+                <DollarWizard
+                addDollarCalc={this.props.addDollarCalc}
+                onDolPromptChange={this.props.onDolPromptChange}
+                onDolChange={this.props.onDolChange}
+                perDollarState={this.props.perDollarState}
+                dollarState={this.props.dollarState}
+                wizardId={this.id}
+                />
             </div>
         )
-
-        //create a function that inserts the wizNumber as an id in percentWizardRender's div
-        //create a function that inserts the wizNumber as an id in percentWizardRender's div
 
         return (
-            <div>
+            <div className="tc ph4">
                 <h2>2. Enter your pricing information:</h2>
                 <div>
                     {percentWizardRender}
@@ -36,30 +41,5 @@ class Wizards extends React.Component {
             </div>
         )
     }
-
-    
-
-    // render() {
-
-    // }
-
-
-    // renderStats() {
-    //     return this.props.users.map((stats) => {
-    //         return (
-    //             <Td className="align-middle" column="badges">{ this.getPercentWizards(this.props.percentWizardCount) }</Td>
-    //         );
-    //     });
-    // }
-
-// const Wizards = ( {percentWizards, dollarWizards} ) {
-//     render() {
-//         return ( 
-//             <Table>
-//                 { this.renderStats() } 
-//             </Table>
-//         );
-//     }
-//     }
 }
 export default Wizards;
