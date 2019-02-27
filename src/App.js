@@ -14,12 +14,13 @@ const initialState = {
   dollarWizards: {
     total: []
   },
-  percentCalculators: {
-    total: [],
-  },
-  dollarCalculators: {
-    total: [],
-},
+//   },
+//   percentCalculators: {
+//     total: [],
+//   },
+//   dollarCalculators: {
+//     total: [],
+// },
   percentPrompts: [],
   dollarPrompts: [],
   rates: [],
@@ -30,10 +31,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
-    this.onPerPromptChange = this.onPerPromptChange.bind(this);
-    this.onDolPromptChange = this.onDolPromptChange.bind(this);
-    this.onRateChange = this.onRateChange.bind(this);
-    this.onDolChange = this.onDolChange.bind(this);
+    
   }
 
   addPercentWiz = () => {
@@ -50,45 +48,15 @@ class App extends Component {
 
 //reinsert params newPrompt, newRate
 
-  addPercentCalc = () => {
-    let perCalcLength = this.state.percentCalculators.total.length;
-    this.setState({percentCalculators: 
-      {total: [...this.state.percentCalculators.total, `perCalc${perCalcLength}`]
-    }})
-    // this.setState({percentCalculators: 
-    //   {list: 
-    //     {prompt: [...this.state.percentCalculators.list.prompt, newPrompt], rate: [...this.state.percentCalculators.list.rate, newRate]}}})
-    console.log(this.state.percentCalculators)
-  }
-
-//work through this https://reactjs.org/docs/lifting-state-up.html
-
-  onPerPromptChange = (promptState) => {
-    this.setState({ percentPrompts: [...this.state.percentPrompts, promptState]});
-    console.log(this.state.percentPrompts)
-  }
-
-  onDolPromptChange = (promptState) => {
-    this.setState({ dollarPrompts: [...this.state.dollarPrompts, promptState]});
-    console.log(this.state.dollarPrompts)
-  }
-
-  onRateChange = (rateState) => {
-    this.setState({ rates: [...this.state.rates, rateState]});
-    console.log(this.state.rates)
-  }
-
-  onDolChange = (dolState) => {
-    this.setState({ dollars: [...this.state.dollars, dolState]});
-    console.log(this.state.dollars)
-  }
-
-  // handleRateChange = (evt) => {
-  //   this.setState({ percentCalculators: 
-  //     {list: 
-  //       {rate: 
-  //         [...this.state.percentCalculators.list.rate, evt]}}});
-  //   console.log(this.state.prompt)
+  // addPercentCalc = () => {
+  //   let perCalcLength = this.state.percentCalculators.total.length;
+  //   this.setState({percentCalculators: 
+  //     {total: [...this.state.percentCalculators.total, `perCalc${perCalcLength}`]
+  //   }})
+  //   // this.setState({percentCalculators: 
+  //   //   {list: 
+  //   //     {prompt: [...this.state.percentCalculators.list.prompt, newPrompt], rate: [...this.state.percentCalculators.list.rate, newRate]}}})
+  //   console.log(this.state.percentCalculators)
   // }
   
   addDollarCalc = () => {
@@ -100,8 +68,22 @@ class App extends Component {
   clearCalculators = () => {
     this.setState({percentWizards: {total: []}});
     this.setState({dollarWizards: {total: []}});
-    this.setState({percentCalculators: {total: [], list: []}});
-    this.setState({dollarCalculators: {total: [], list: []}});
+    // this.setState({percentCalculators: {total: [], list: []}});
+    // this.setState({dollarCalculators: {total: [], list: []}});
+  }
+
+  onPercentFormSubmit = (promptState, rateState) => {
+    this.setState({ percentPrompts: [...this.state.percentPrompts, promptState]});
+    this.setState({ rates: [...this.state.rates, rateState]});
+    console.log("perPromptState" + this.state.percentPrompts);
+    console.log("RateState" + this.state.rates)
+  }
+
+  onDollarFormSubmit = (promptState, dollarState) => {
+    this.setState({ dollarPrompts: [...this.state.dollarPrompts, promptState]});
+    this.setState({ dollars: [...this.state.dollars, dollarState]});
+    console.log("dolPromptState" + this.state.dollarPrompts);
+    console.log("dolState" + this.state.dollars)
   }
 
   render() {
@@ -128,6 +110,9 @@ class App extends Component {
               onDolPromptChange={this.onDolPromptChange}
               onRateChange={this.onRateChange}
               onDolChange={this.onDolChange}
+              //form submit
+              onPercentFormSubmit={this.onPercentFormSubmit}
+              onDollarFormSubmit={this.onDollarFormSubmit}
               perPromptState={this.state.percentPrompts}
               perDollarState={this.state.dollarPrompts}
               rateState={this.state.rates}
@@ -136,8 +121,8 @@ class App extends Component {
           </div>
           <div className="w-auto w-third-l">
             <Calculators
-              percentCalculators={this.state.percentCalculators.total}
-              dollarCalculators={this.state.dollarCalculators.total}
+              percentCalculators={this.state.percentWizards.total}
+              dollarCalculators={this.state.dollarWizards.total}
             />
           </div>
         </div>

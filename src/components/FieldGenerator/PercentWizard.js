@@ -3,46 +3,34 @@ import React from "react";
 class PercentWizard extends React.Component {
     constructor (props) {
         super(props);
-        this.handlePromptChange = this.handlePromptChange.bind(this);
-        this.handleRateChange = this.handleRateChange.bind(this);
+        this.state = {
+            prompt: [],
+            rate: []
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
-      
-    //   handleChange (evt) {
-    //     this.setState({ [evt.target.name]: evt.target.value });
-    //     evt.preventDefault();
-    //     console.log(this.state.prompt)
-    //     console.log(this.state.rate)
-    //   }
-      handlePromptChange (e) {
-        this.props.onPerPromptChange(e.target.value);
-        e.preventDefault();
-        // console.log(this.props.perPromptState) <--created infinite, browser-crashing loop
-        //it is currently populating the field with the changed contents of the state
-        //this means that the state is changing(good) but you need to fix the repopulation thing
-        //ALSO note the query strings at the top--these will submit when you submit the form, and that's what you want to change the state
-      }
 
-      handleRateChange (e) {
-        this.props.onRateChange(e.target.value);
-        e.preventDefault();
-        // console.log(this.props.rateState) <--created infinite, browser-crashing loop
-      }
+    handleChange (e) {
+    this.setState({ [e.target.name]: e.target.value });
+    e.preventDefault();
+    console.log(this.state.prompt)
+    console.log(this.state.rate)
+    }
 
-    // handlePromptChange = () => {
-    //     let text = this.value;
-    //     this.props.handlePromptChange(text)
-    // }
+    handleFormSubmit(e) {
+        this.props.onPercentFormSubmit(this.state.prompt, this.state.rate);
+        e.preventDefault();
+        console.log(e.target)
+    }
 
     render() {
-        const perPromptState = this.props.perPromptState;
-        const rateState = this.props.rateState;
         return (
             <div className="ba br2 mb3">
-                <form>
+                <form onSubmit={this.handleFormSubmit}>
                     <h3>Enter the text that prompts your customers for their current rate:</h3>
                         <p><input
-                            onChange={this.handlePromptChange}
-                            // value={perPromptState}
+                            onChange={this.handleChange}
                             className="br2" 
                             type="text"
                             name="prompt"
@@ -50,8 +38,7 @@ class PercentWizard extends React.Component {
                             </p>
                     <h3>Enter your business's rate (this will not display)</h3>
                         <p><input
-                            onChange={this.handleRateChange}
-                            // value={rateState}
+                            onChange={this.handleChange}
                             className="br2"
                             type="text"
                             name="rate"
@@ -59,16 +46,11 @@ class PercentWizard extends React.Component {
                             %</p>
                     <button
                     className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
-                    onClick={() => {
-                        this.props.addPercentCalc();
-                    }}
-                    >Create Percent Calculator</button>
+                    >Update Percent Calculator</button>
                 </form>
             </div>
         )
     }
 }
 
-//this.state.prompt, this.state.rate);
-//evt.preventDefault()
 export default PercentWizard;

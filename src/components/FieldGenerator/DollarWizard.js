@@ -1,28 +1,53 @@
 import React from "react";
 
 class DollarWizard extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            prompt: [],
+            dollar: []
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
+
+handleChange (e) {
+    this.setState({ [e.target.name]: e.target.value });
+    e.preventDefault();
+    console.log(this.state.prompt)
+    console.log(this.state.dollar)
+    }
+
+    handleFormSubmit(e) {
+        this.props.onDollarFormSubmit(this.state.prompt, this.state.dollar);
+        e.preventDefault();
+        console.log(e.target)
+    }
 
     render() {
         return (
             <div className="ba br2 mb3">
-                <div>
+                <form onSubmit={this.handleFormSubmit}>
                     <h3>Enter the text that prompts your customers for their current price:</h3>
                         <p><input
+                            onChange={this.handleChange}
                             className="br2"
                             type="text"
+                            name="prompt"
                             placeholder="eg.: What is your current monthly fee?"/>
                             </p>
-                    <h3>Enter your business's price (this will not display)</h3>
+                    <h3>Enter your business's price:</h3>
                         <p><input
+                            onChange={this.handleChange}
                             className="br2"
                             type="text"
+                            name="dollar"
                             placeholder="eg.: $10"/>
                             %</p>
                     <button
                     className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
-                    onClick={() => this.props.addDollarCalc()}
-                    >Create Calculator</button>
-                </div>
+                    >Update Dollar Calculator</button>
+                </form>
             </div>
         )
     }
