@@ -1,6 +1,6 @@
 import React from "react";
 
-class Generators extends React.Component {
+class Generator extends React.Component {
 
     render() {
     return (
@@ -20,4 +20,4 @@ class Generators extends React.Component {
 }
 }
 
-export default Generators;
+export default Generator;

@@ -5,19 +5,19 @@ import DollarWizard from "./DollarWizard"
 class Wizards extends React.Component {
 
     render() {
-        const percentWizardRender = this.props.percentWizardCount.map((count, key) =>
-            <div id={count} key={key}>
+        const percentWizardRender = this.props.percentWizardCount.map((key, count) =>
+            <div id={key} key={count}>
                 <PercentWizard
                 onPercentFormSubmit={this.props.onPercentFormSubmit}
-                wizardId={this.id}
+                wizardId={count}
                 />
             </div>
         )
-        const dollarWizardRender = this.props.dollarWizardCount.map((count, key) =>
-            <div id={count} key={key}>
+        const dollarWizardRender = this.props.dollarWizardCount.map((key, count) =>
+            <div id={key} key={count}>
                 <DollarWizard
                 onDollarFormSubmit={this.props.onDollarFormSubmit}
-                wizardId={this.id}
+                wizardId={count}
                 />
             </div>
         )

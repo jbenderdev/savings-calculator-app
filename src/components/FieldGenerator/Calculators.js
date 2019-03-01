@@ -4,15 +4,18 @@ import DollarCalculator from "./DollarCalculator"
 class Calculators extends React.Component {
 
     render() {
-        const percentCalcRender = this.props.percentCalculators.map((count, key) =>
-            <div id={count} key={key}>
+        const percentCalcRender = this.props.percentCalculators.map((key, count) =>
+            <div id={key} key={count}>
                 <PercentCalculator
+                percentCalculator={this.props.percentCalculators}
+                calcId={count}
                 />
             </div>
         )
-        const dollarCalcRender = this.props.dollarCalculators.map((count, key) =>
-            <div id={count} key={key}>
+        const dollarCalcRender = this.props.dollarCalculators.map((key, count) =>
+            <div id={key} key={count}>
                 <DollarCalculator
+                calcId={count}
                 />
             </div>
         )

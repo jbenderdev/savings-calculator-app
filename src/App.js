@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Header from './components/Header/Header';
-import Generators from "./components/FieldGenerator/Generator";
+import Generator from "./components/FieldGenerator/Generator";
 import Wizards from "./components/FieldGenerator/Wizards";
 import Calculators from "./components/FieldGenerator/Calculators";
 import "tachyons";
@@ -9,81 +9,62 @@ import './App.css';
 
 const initialState = {
   percentWizards: {
-    total: [], 
+    total: [
+    ],
   },
   dollarWizards: {
-    total: []
-  },
-//   },
-//   percentCalculators: {
-//     total: [],
-//   },
-//   dollarCalculators: {
-//     total: [],
-// },
-  percentPrompts: [],
-  dollarPrompts: [],
-  rates: [],
-  dollars: []
+    total: [
+    ]
+  }
 }
 
 class App extends Component {
   constructor() {
     super();
     this.state = initialState;
-    
   }
+
+// creating wizards (called in Generator.js)
 
   addPercentWiz = () => {
     let perWizLength = this.state.percentWizards.total.length;
-    this.setState({percentWizards: {total: [...this.state.percentWizards.total, `perWiz${perWizLength}`]}})
+    let newWizard = JSON.parse(`{ "name": "PercentWizard${perWizLength}", "prompt": "(Set this prompt in the wizard)", "rate": "" }`);
+    this.setState({percentWizards: {total: [...this.state.percentWizards.total, newWizard]}})
     console.log(this.state.percentWizards)
   }
-  
+
   addDollarWiz = () => {
-    let dolWizLength = this.state.dollarWizards.total.length;
-    this.setState({dollarWizards: {total: [...this.state.dollarWizards.total, `dolWiz${dolWizLength}`]}})
+    let perWizLength = this.state.dollarWizards.total.length;
+    let newWizard = JSON.parse(`{ "name": "DollarWizard${perWizLength}", "prompt": "(Set this prompt in the wizard)", "dollar": "" }`);
+    this.setState({dollarWizards: {total: [...this.state.dollarWizards.total, newWizard]}})
     console.log(this.state.dollarWizards)
   }
 
-//reinsert params newPrompt, newRate
+// updating wizard states (called in SomeWizard.js) - could eventually be refactored to be reused
 
-  // addPercentCalc = () => {
-  //   let perCalcLength = this.state.percentCalculators.total.length;
-  //   this.setState({percentCalculators: 
-  //     {total: [...this.state.percentCalculators.total, `perCalc${perCalcLength}`]
-  //   }})
-  //   // this.setState({percentCalculators: 
-  //   //   {list: 
-  //   //     {prompt: [...this.state.percentCalculators.list.prompt, newPrompt], rate: [...this.state.percentCalculators.list.rate, newRate]}}})
-  //   console.log(this.state.percentCalculators)
-  // }
-  
-  addDollarCalc = () => {
-    let dolCalcLength = this.state.dollarCalculators.total.length;
-    this.setState({dollarCalculators: {total: [...this.state.dollarCalculators.total, `dolCalc${dolCalcLength}`]}})
-    console.log(this.state.dollarCalculators)
+  onPercentFormSubmit = (wizardId, promptState, rateState) => {
+    let currentPercentWizards = this.state.percentWizards.total;
+    let updatedWizard = currentPercentWizards[wizardId];
+    updatedWizard.prompt = promptState;
+    updatedWizard.rate = rateState;
+    currentPercentWizards[wizardId] = updatedWizard;
+    this.setState({percentWizards: {total: currentPercentWizards}});
+    console.log("onFormSubmit " + JSON.stringify(this.state.percentWizards.total))
+  }
+
+  onDollarFormSubmit = (wizardId, promptState, dollarState) => {
+    let currentDollarWizards = this.state.dollarWizards.total;
+    let updatedWizard = currentDollarWizards[wizardId];
+    updatedWizard.prompt = promptState;
+    updatedWizard.dollar = dollarState;
+    currentDollarWizards[wizardId] = updatedWizard;
+    this.setState({dollarWizards: {total: currentDollarWizards}});
+    console.log("onFormSubmit " + JSON.stringify(this.state.dollarWizards.total))
   }
 
   clearCalculators = () => {
     this.setState({percentWizards: {total: []}});
     this.setState({dollarWizards: {total: []}});
-    // this.setState({percentCalculators: {total: [], list: []}});
-    // this.setState({dollarCalculators: {total: [], list: []}});
-  }
-
-  onPercentFormSubmit = (promptState, rateState) => {
-    this.setState({ percentPrompts: [...this.state.percentPrompts, promptState]});
-    this.setState({ rates: [...this.state.rates, rateState]});
-    console.log("perPromptState" + this.state.percentPrompts);
-    console.log("RateState" + this.state.rates)
-  }
-
-  onDollarFormSubmit = (promptState, dollarState) => {
-    this.setState({ dollarPrompts: [...this.state.dollarPrompts, promptState]});
-    this.setState({ dollars: [...this.state.dollars, dollarState]});
-    console.log("dolPromptState" + this.state.dollarPrompts);
-    console.log("dolState" + this.state.dollars)
   }
 
   render() {
@@ -94,7 +75,7 @@ class App extends Component {
         <Header />
         <div className="flex flex-wrap">
           <div className="w-auto w-third-l">
-            <Generators
+            <Generator
               setPercentWizCount={this.addPercentWiz}
               setDollarWizCount={this.addDollarWiz}
               clearAll={this.clearCalculators}
@@ -104,19 +85,8 @@ class App extends Component {
             <Wizards
               percentWizardCount={this.state.percentWizards.total}
               dollarWizardCount={this.state.dollarWizards.total}
-              addPercentCalc={this.addPercentCalc}
-              addDollarCalc={this.addDollarCalc}
-              onPerPromptChange={this.onPerPromptChange}
-              onDolPromptChange={this.onDolPromptChange}
-              onRateChange={this.onRateChange}
-              onDolChange={this.onDolChange}
-              //form submit
               onPercentFormSubmit={this.onPercentFormSubmit}
               onDollarFormSubmit={this.onDollarFormSubmit}
-              perPromptState={this.state.percentPrompts}
-              perDollarState={this.state.dollarPrompts}
-              rateState={this.state.rates}
-              dollarState={this.state.dollars}
             />
           </div>
           <div className="w-auto w-third-l">
