@@ -15,6 +15,7 @@ class Calculators extends React.Component {
         const dollarCalcRender = this.props.dollarCalculators.map((key, count) =>
             <div id={key} key={count}>
                 <DollarCalculator
+                dollarCalculator={this.props.dollarCalculators}
                 calcId={count}
                 />
             </div>

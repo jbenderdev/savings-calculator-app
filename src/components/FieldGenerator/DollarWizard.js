@@ -38,13 +38,13 @@ handleChange (e) {
                                 placeholder="eg.: What is your current monthly fee?"/>
                                 </p>
                         <h3>Enter your business's price:</h3>
-                            <p><input
+                            <p>$<input
                                 onChange={this.handleChange}
                                 className="br2"
                                 type="text"
                                 name="dollar"
                                 placeholder="eg.: $10"/>
-                                %</p>
+                                </p>
                         <button
                         className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
                         >Update Dollar Calculator</button>

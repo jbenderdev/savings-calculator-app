@@ -17,6 +17,7 @@ class Result extends React.Component {
                     <SavingsResult
                     businessRate={this.props.businessRate}
                     customerRate={this.props.customerRate}
+                    wizardObject={this.props.wizardObject}
                     />
                 </div>
             );

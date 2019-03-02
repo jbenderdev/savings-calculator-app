@@ -49,37 +49,31 @@ class PercentCalculator extends React.Component {
                     <Result 
                     customerRate={this.state.customerRate}
                     businessRate={yourRate}
+                    wizardObject={this.props.percentCalculator}
                     />
                 </div>
             </div>
         );
-    } else {
-        return (
-            <div className="ba br2 mb3">
-                <form onSubmit={this.resultRender}>
-                    <h2>{promptText}</h2>
-                        <p><input
-                            onChange={this.handleChange} 
-                            className="br2" 
-                            type="text"
-                            name="customerRate"
-                            placeholder="4"/>
-                            %</p>
-                        <button
-                            className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
-                        >See your savings!</button>
-                </form>
-            </div>
-        );
+        } else {
+            return (
+                <div className="ba br2 mb3">
+                    <form onSubmit={this.resultRender}>
+                        <h2>{promptText}</h2>
+                            <p><input
+                                onChange={this.handleChange} 
+                                className="br2" 
+                                type="text"
+                                name="customerRate"
+                                placeholder="4"/>
+                                %</p>
+                            <button
+                                className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+                            >See your savings!</button>
+                    </form>
+                </div>
+            );
+        }
     }
-}
-
-// componentDidUpdate(prevState) {
-//     if (this.state.submitted !== prevState.submitted) {
-//       this.setState({submitted: false});
-//     }
-//   }
-
 }
 
 export default PercentCalculator;
