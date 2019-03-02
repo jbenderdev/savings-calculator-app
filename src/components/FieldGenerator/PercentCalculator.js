@@ -1,40 +1,38 @@
 import React from "react";
-import Result from "./Result.js"
+import Result from "./Result";
 
 class PercentCalculator extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            customerRate: "",
+            customerRate: null,
+            submitted: false
         }
         this.handleChange = this.handleChange.bind(this);
+        this.resultRender = this.resultRender.bind(this);
     }
 
-    handleChange (e) {
+    handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+        this.setState({submitted: false})
         e.preventDefault();
         console.log(this.state.customerRate)
     }
 
-//need to get Result.js reading this component's state and rendering correctly
+    resultRender(e) {
+        this.setState({submitted: true});
+        e.preventDefault();
+        console.log(this.state.submitted)
+    }
 
     render() {
         const partnerWizard = this.props.percentCalculator[this.props.calcId];
-
-        const result = () =>
-            <div>
-                <Result 
-                result={this.state.result}
-                partnerWizard={this.partnerWizard}
-                customerRate={this.state.customerRate}
-                />
-            </div>
-
         const promptText = partnerWizard.prompt;
-
+        const yourRate = partnerWizard.rate;
+        if (this.state.submitted) {
         return (
             <div className="ba br2 mb3">
-                <form>
+                <form onSubmit={this.resultRender}>
                     <h2>{promptText}</h2>
                         <p><input
                             onChange={this.handleChange} 
@@ -48,11 +46,40 @@ class PercentCalculator extends React.Component {
                         >See your savings!</button>
                 </form>
                 <div>
-                    {result}
+                    <Result 
+                    customerRate={this.state.customerRate}
+                    businessRate={yourRate}
+                    />
                 </div>
             </div>
-        )
+        );
+    } else {
+        return (
+            <div className="ba br2 mb3">
+                <form onSubmit={this.resultRender}>
+                    <h2>{promptText}</h2>
+                        <p><input
+                            onChange={this.handleChange} 
+                            className="br2" 
+                            type="text"
+                            name="customerRate"
+                            placeholder="4"/>
+                            %</p>
+                        <button
+                            className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+                        >See your savings!</button>
+                </form>
+            </div>
+        );
     }
+}
+
+// componentDidUpdate(prevState) {
+//     if (this.state.submitted !== prevState.submitted) {
+//       this.setState({submitted: false});
+//     }
+//   }
+
 }
 
 export default PercentCalculator;

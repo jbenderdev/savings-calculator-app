@@ -21,7 +21,6 @@ class PercentWizard extends React.Component {
     handleFormSubmit(e) {
         this.props.onPercentFormSubmit(this.props.wizardId, this.state.prompt, this.state.rate);
         e.preventDefault();
-        console.log(e.target)
     }
 
     render() {

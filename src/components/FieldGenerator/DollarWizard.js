@@ -21,7 +21,6 @@ handleChange (e) {
     handleFormSubmit(e) {
         this.props.onDollarFormSubmit(this.props.wizardId, this.state.prompt, this.state.dollar);
         e.preventDefault();
-        console.log(e.target)
     }
 
     render() {
