@@ -26,27 +26,33 @@ class PercentWizard extends React.Component {
     render() {
         const headerText = `Percent Wizard ${this.props.wizardId + 1}`
         return (
-            <div className="ba br2 mb3">
+            <div className="ma0">
                 <form onSubmit={this.handleFormSubmit}>
-                    <h2>{headerText}</h2>
-                        <h3>Enter the text that prompts your customers for their current rate:</h3>
-                            <p><input
-                                onChange={this.handleChange}
-                                className="br2" 
-                                type="text"
-                                name="prompt"
-                                placeholder="eg.: What is your current monthly rate?"/>
-                                </p>
-                        <h3>Enter your business's rate (this will not display)</h3>
-                            <p><input
-                                onChange={this.handleChange}
-                                className="br2"
-                                type="text"
-                                name="rate"
-                                placeholder="eg.: 4.5"/>
-                                %</p>
+                    <h2 className="f3 lh-copy dark-blue fw4">{headerText}</h2>
+                        <h3 className="tc f4 lh-copy dark-blue fw4">Enter the text that asks your customers for their current rate:</h3>
+                            <p>
+                                <input
+                                    onChange={this.handleChange}
+                                    className="f5 lh-copy dark-blue fw2 br2 w-80"
+                                    type="text"
+                                    name="prompt"
+                                    placeholder="eg.: What is your current monthly rate?"
+                                    />
+                            </p>
+                        <h3 className="tc f4 lh-copy dark-blue fw4">Enter your business's rate (this will not display)</h3>
+                            <p className="f4 lh-copy dark-blue fw4">
+                                <input
+                                    onChange={this.handleChange}
+                                    className="f5 lh-copy dark-blue fw2 br2 mb2 w-20"
+                                    type="number"
+                                    step="0.01"
+                                    min="0"
+                                    name="rate"
+                                    placeholder="eg.: 4.5"
+                                    />
+                            %</p>
                         <button
-                        className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+                        className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue shadow-2"
                         >Update Percent Calculator</button>
                 </form>
             </div>

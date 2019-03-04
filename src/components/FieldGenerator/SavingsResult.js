@@ -11,7 +11,7 @@ class SavingsResult extends React.Component {
     componentDidMount() {
         let businessRate = this.props.businessRate;
         let customerRate = this.props.customerRate;
-        let difference = parseFloat(customerRate) - parseFloat(businessRate);
+        let difference = (parseFloat(customerRate) - parseFloat(businessRate)).toFixed(2);
         //this is a really bad conditional, but it works for now
         if (JSON.stringify(this.props.wizardObject).includes('dollar')) {
             this.setState({renderSavings: `$${difference}`});
@@ -24,7 +24,7 @@ class SavingsResult extends React.Component {
     render() {
         return (
             <div>
-                <p>We can save you up to {this.state.renderSavings}!</p>
+                <p className="f4 lh-copy dark-blue fw4">We can save you up to {this.state.renderSavings}!</p>
             </div>
         )
     }

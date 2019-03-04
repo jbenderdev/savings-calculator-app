@@ -28,14 +28,14 @@ class App extends Component {
 
   addPercentWiz = () => {
     let perWizLength = this.state.percentWizards.total.length;
-    let newWizard = JSON.parse(`{ "name": "PercentWizard${perWizLength}", "prompt": "(Set this prompt in the wizard)", "rate": "" }`);
+    let newWizard = JSON.parse(`{ "name": "PercentWizard${perWizLength}", "prompt": "<- Set this prompt in the wizard", "rate": "" }`);
     this.setState({percentWizards: {total: [...this.state.percentWizards.total, newWizard]}})
     console.log(this.state.percentWizards)
   }
 
   addDollarWiz = () => {
     let perWizLength = this.state.dollarWizards.total.length;
-    let newWizard = JSON.parse(`{ "name": "DollarWizard${perWizLength}", "prompt": "(Set this prompt in the wizard)", "dollar": "" }`);
+    let newWizard = JSON.parse(`{ "name": "DollarWizard${perWizLength}", "prompt": "<- Set this prompt in the wizard", "dollar": "" }`);
     this.setState({dollarWizards: {total: [...this.state.dollarWizards.total, newWizard]}})
     console.log(this.state.dollarWizards)
   }
@@ -73,7 +73,7 @@ class App extends Component {
       <div>
         <Navigation />
         <Header />
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center">
           <div className="w-auto w-third-l">
             <Generator
               setPercentWizCount={this.addPercentWiz}

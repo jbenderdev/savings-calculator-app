@@ -4,10 +4,9 @@ import MatchResult from "./MatchResult";
 
 class Result extends React.Component {
     render() {
-        if (this.props.customerRate === null) {
+        if (this.props.customerRate === null || this.props.businessRate === "") {
             return (
                 <div>
-                    <p></p>
                 </div>
             );
         }

@@ -29,20 +29,22 @@ class PercentCalculator extends React.Component {
         const partnerWizard = this.props.percentCalculator[this.props.calcId];
         const promptText = partnerWizard.prompt;
         const yourRate = partnerWizard.rate;
-        if (this.state.submitted) {
+        if (this.state.submitted && this.state.customerRate !== "") {
         return (
-            <div className="ba br2 mb3">
+            <div className="ma0">
                 <form onSubmit={this.resultRender}>
-                    <h2>{promptText}</h2>
-                        <p><input
+                    <h2 className="f3 lh-copy dark-blue fw4">{promptText}</h2>
+                        <p className="f4 lh-copy dark-blue fw4"><input
                             onChange={this.handleChange} 
-                            className="br2" 
-                            type="text"
+                            className="f5 lh-copy dark-blue fw2 br2 w-20"
+                            type="number"
+                            step="0.01"
+                            min="0"
                             name="customerRate"
                             placeholder="4"/>
                             %</p>
                         <button
-                            className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+                            className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue shadow-2"
                         >See your savings!</button>
                 </form>
                 <div>
@@ -56,18 +58,20 @@ class PercentCalculator extends React.Component {
         );
         } else {
             return (
-                <div className="ba br2 mb3">
+                <div className="ma0">
                     <form onSubmit={this.resultRender}>
-                        <h2>{promptText}</h2>
-                            <p><input
+                        <h2 className="f3 lh-copy dark-blue fw4">{promptText}</h2>
+                            <p className="f4 lh-copy dark-blue fw4"><input
                                 onChange={this.handleChange} 
-                                className="br2" 
-                                type="text"
+                                className="f5 lh-copy dark-blue fw2 br2 w-20"
+                                type="number"
+                                step="0.01"
+                                min="0"
                                 name="customerRate"
                                 placeholder="4"/>
                                 %</p>
                             <button
-                                className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+                                className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue shadow-2"
                             >See your savings!</button>
                     </form>
                 </div>
