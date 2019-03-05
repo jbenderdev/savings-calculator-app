@@ -24,7 +24,7 @@ class SavingsResult extends React.Component {
     render() {
         return (
             <div>
-                <p className="f4 lh-copy dark-blue fw4">We can save you up to {this.state.renderSavings}!</p>
+                <p className="f5 lh-copy dark-gray fw3 f4-l">We can save you up to {this.state.renderSavings}!</p>
             </div>
         )
     }

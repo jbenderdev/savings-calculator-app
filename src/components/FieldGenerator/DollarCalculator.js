@@ -33,20 +33,21 @@ class DollarCalculator extends React.Component {
         return (
             <div className="ma0">
                 <form onSubmit={this.resultRender}>
-                    <h2 className="f3 lh-copy green fw4">{promptText}</h2>
-                        <p className="f4 lh-copy green fw4">$
+                    <h2 className="f4 lh-copy dark-gray fw3 f3-l">{promptText}</h2>
+                        <p className="f5 f4-l fw3 lh-copy dark-gray">
+                        <span className="relative left-1">$</span>
                             <input
                             onChange={this.handleChange} 
-                            className="f5 lh-copy green fw2 br2 mb2 w-20" 
+                            className="f5 lh-copy dark-gray fw3 mb2 w-30 pl3 bt-0 br-0 bl-0 bb bg-transparent f4-l"
                             type="number"
                             step="0.01"
                             min="0"
                             name="customerPrice"
-                            placeholder="4"
+                            placeholder="15.00"
                             />
                             </p>
                         <button
-                            className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-green shadow-2"
+                            className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-dark-green"
                         >See your savings!</button>
                 </form>
                 <div>
@@ -62,22 +63,23 @@ class DollarCalculator extends React.Component {
             return (
                 <div className="ma0">
                     <form onSubmit={this.resultRender}>
-                        <h2 className="f3 lh-copy green fw4">{promptText}</h2>
-                            <p className="f4 lh-copy green fw4">$
-                                <input
-                                onChange={this.handleChange} 
-                                className="f5 lh-copy green fw2 br2 mb2 w-20" 
-                                type="number"
-                                step="0.01"
-                                min="0"
-                                name="customerPrice"
-                                placeholder="4"
-                                />
-                                </p>
-                            <button
-                                className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-green shadow-2"
-                            >See your savings!</button>
-                    </form>
+                    <h2 className="f4 lh-copy dark-gray fw3 f3-l">{promptText}</h2>
+                        <p className="f5 f4-l fw3 lh-copy dark-gray">
+                        <span className="relative left-1">$</span>
+                            <input
+                            onChange={this.handleChange} 
+                            className="f5 lh-copy dark-gray fw3 mb2 w-30 pl3 bt-0 br-0 bl-0 bb bg-transparent f4-l"
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            name="customerPrice"
+                            placeholder="15.00"
+                            />
+                            </p>
+                        <button
+                            className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-dark-green"
+                        >See your savings!</button>
+                </form>
                 </div>
             );
         }

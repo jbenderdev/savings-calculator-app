@@ -28,31 +28,32 @@ handleChange (e) {
         return (
             <div className="ma0">
                 <form onSubmit={this.handleFormSubmit}>
-                    <h2 className="f3 lh-copy green fw4">{headerText}</h2>
-                        <h3 className="f4 lh-copy green fw4">Enter the text that prompts your customers for their current price:</h3>
+                    <h2 className="f4 lh-copy dark-gray fw3 f3-l">{headerText}</h2>
+                        <h3 className="tc f5 fw3 lh-copy dark-gray f4-l">Enter the text that asks your customers for their current price:</h3>
                             <p>
                                 <input
                                     onChange={this.handleChange}
-                                    className="f5 lh-copy green fw2 br2 w-80"
+                                    className="f5 lh-copy dark-gray fw3 mb2 w-80 bt-0 br-0 bl-0 bb bg-transparent f4-l"
                                     type="text"
                                     name="prompt"
-                                    placeholder="eg.: What is your current monthly fee?"
+                                    placeholder="What is your current monthly fee?"
                                     />
                             </p>
-                        <h3 className="f4 lh-copy green fw4">Enter your business's price:</h3>
-                            <p className="f4 lh-copy green fw4">$
+                        <h3 className="tc f5 fw3 lh-copy dark-gray f4-l">Enter your business's most competitive price:</h3>
+                            <p className="f5 f4-l fw3 lh-copy dark-gray">
+                            <span className="relative left-1">$</span>
                                 <input
                                     onChange={this.handleChange}
-                                    className="f5 lh-copy green fw2 br2 mb2 w-20"
+                                    className="f5 lh-copy dark-gray fw3 mb2 w-30 pl3 bt-0 br-0 bl-0 bb bg-transparent f4-l"
                                     type="number"
                                     step="0.01"
                                     min="0"
                                     name="dollar"
-                                    placeholder="eg.: $10"
+                                    placeholder="10.00"
                                 />
                             </p>
                         <button
-                        className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-green shadow-2"
+                        className="f6 f4-l f5-m fw3 link dim br3 ph3 pv2 mb2 dib white bg-green"
                         >Update Dollar Calculator</button>
                 </form>
             </div>
