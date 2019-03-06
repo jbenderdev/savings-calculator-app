@@ -3,7 +3,7 @@ A customizable savings calculator for marketing purposes. Built with React.
 
 Marketers can preload the calculator with custom values for their rates/fees/prices. The calculators will then prompt prospects to enter their current pricing values and indicate whether and how much customers can save.
 
-The app currently generates calculators for simple percent and dollar comparisons. The next step is to compile the calculator code in real time with Babel and render it in the frontend so that marketers can simply copy and paste the CSS/JavaScript into their websites.
+The app currently generates calculators for simple percent and dollar comparisons. The next step is to compile the calculator code to vanilla JS and render it in the frontend so that marketers can simply copy and paste the HTML/CSS/JavaScript into their websites.
 
 Long-term plans include: 
 

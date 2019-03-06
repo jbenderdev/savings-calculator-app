@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Generator from "./components/FieldGenerator/Generator";
 import Wizards from "./components/FieldGenerator/Wizards";
 import Calculators from "./components/FieldGenerator/Calculators";
+import CodeOutput from "./components/CodeOutput/CodeOutput";
 import "tachyons";
 import './App.css';
 
@@ -71,30 +72,38 @@ class App extends Component {
 
     return (
       <div>
-        <Navigation />
-        <Header />
-        <div className="flex flex-wrap justify-center">
-          <div className="w-auto w-third-l">
-            <Generator
-              setPercentWizCount={this.addPercentWiz}
-              setDollarWizCount={this.addDollarWiz}
-              clearAll={this.clearCalculators}
-              />
-          </div>
-          <div className="w-auto w-third-l">
-            <Wizards
-              percentWizardCount={this.state.percentWizards.total}
-              dollarWizardCount={this.state.dollarWizards.total}
-              onPercentFormSubmit={this.onPercentFormSubmit}
-              onDollarFormSubmit={this.onDollarFormSubmit}
-            />
-          </div>
-          <div className="w-auto w-third-l">
-            <Calculators
-              percentCalculators={this.state.percentWizards.total}
-              dollarCalculators={this.state.dollarWizards.total}
-            />
-          </div>
+        <div>
+          <Navigation />
+          <Header />
+            <div className="flex flex-wrap justify-center">
+              <div className="w-auto w-third-l">
+                <Generator
+                  setPercentWizCount={this.addPercentWiz}
+                  setDollarWizCount={this.addDollarWiz}
+                  clearAll={this.clearCalculators}
+                  />
+              </div>
+              <div className="w-auto w-third-l">
+                <Wizards
+                  percentWizardCount={this.state.percentWizards.total}
+                  dollarWizardCount={this.state.dollarWizards.total}
+                  onPercentFormSubmit={this.onPercentFormSubmit}
+                  onDollarFormSubmit={this.onDollarFormSubmit}
+                />
+              </div>
+              <div className="w-auto w-third-l">
+                <Calculators
+                  percentCalculators={this.state.percentWizards.total}
+                  dollarCalculators={this.state.dollarWizards.total}
+                />
+              </div>
+            </div>
+        </div>
+        <div>
+          <CodeOutput 
+          percentCalculators={this.state.percentWizards.total}
+          dollarCalculators={this.state.dollarWizards.total}
+          />
         </div>
       </div>
     )
