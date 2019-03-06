@@ -12,20 +12,20 @@ class DolCalcHtml extends React.Component {
                 <h3 className="tc f5 f4-l fw3 lh-copy dark-gray">Dollar Calculator {calcId} HTML</h3>
                     <div>
                     <p className="f7 f6-ns fw3 ph2 dark-gray">
-                    {`<div class="savingsCalculator">
+                    {`<div class="savings-calculator">
                         <form>
-                            <h2 class="formH2">${promptText}</h2>
-                                <p class="formP">
+                            <h2 class="form-h2">${promptText}</h2>
+                                <p class="form-p">
                                 <span class="position: relative; left: 1rem">$</span>
                                     <input
-                                    class="dollarFormInput"
+                                    class="dollar-form-input"
                                     type = "number"
                                     step="0.01"
                                     min="0"
                                     name="customerRate"
                                     placeholder="15.00">
                                 </p>
-                            <button class="formButton">See your savings!</button>
+                            <button class="form-button">See your savings!</button>
                         </form>
                     </div>`}
                     </p>
