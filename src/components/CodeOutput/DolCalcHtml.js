@@ -12,7 +12,7 @@ class DolCalcHtml extends React.Component {
                 <h3 className="tc f5 f4-l fw3 lh-copy dark-gray">Dollar Calculator {calcId} HTML</h3>
                     <div>
                     <p className="f7 f6-ns fw3 ph2 dark-gray">
-                    {`<div class="savings-calculator">
+                    {`<div id="DollarCalculator${calcId}" class="savings-calculator">
                         <form>
                             <h2 class="form-h2">${promptText}</h2>
                                 <p class="form-p">

@@ -16,3 +16,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.wizard-fade-enter {
+    opacity: 0.01;
+  }
+  
+.wizard-fade-enter.wizard-fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.wizard-fade-leave {
+  opacity: 1;
+}
+
+.wizard-fade-leave.wizard-fade-leave-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}
+
+.calculator-fade-enter {
+  opacity: 0.01;
+}
+
+.calculator-fade-enter.calculator-fade-enter-active {
+  opacity: 1;
+  transition: opacity 400ms ease-in;
+}
+
+.calculator-fade-leave {
+  opacity: 1;
+}
+
+.calculator-fade-leave.calculator-fade-leave-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}

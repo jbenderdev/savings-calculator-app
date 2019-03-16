@@ -5,10 +5,10 @@ import DolCalcHtml from "./DolCalcHtml";
 class CodeOutput extends React.Component {
 
     render() {
-        const perCalcHtmlRender = this.props.percentCalculators.map((key, count) =>           
+        const perCalcHtmlRender = this.props.percentCalculators.map((id, count) =>           
             <div
                 className="center ph2 pv1 mb2 mh4 ba br2 bg-white-40 b--white-30 shadow-4 w-60"
-                id={key} 
+                id={id.name} 
                 key={count}>
                     <PerCalcHtml
                     percentCalculator={this.props.percentCalculators}
@@ -16,10 +16,10 @@ class CodeOutput extends React.Component {
                     />
             </div>
         )
-        const dolCalcHtmlRender = this.props.dollarCalculators.map((key, count) =>
+        const dolCalcHtmlRender = this.props.dollarCalculators.map((id, count) =>
             <div
                 className="center ph2 pv1 mb2 mh4 ba br2 bg-white-40 b--white-30 shadow-4 w-60"
-                id={key}
+                id={id.name}
                 key={count}>
                     <DolCalcHtml
                     dollarCalculator={this.props.dollarCalculators}
@@ -42,7 +42,7 @@ class CodeOutput extends React.Component {
                         {perCalcHtmlRender}
                         {dolCalcHtmlRender}
                     </div>
-                <h3 className="tc f4 lh-copy fw3 white-90">Calculator CSS (paste directly into your site's stylesheet or head):</h3>
+                <h3 className="tc f4 lh-copy fw3 white-90">All Calculators CSS (paste directly into your site's stylesheet or head):</h3>
                     <div className="f7 fw3 ph2 dark-gray center pv1 mb2 mh4 ba br2 bg-white-40 b--white-30 shadow-4 w-60 f6-ns">
                         {`.savings-calculator {
                         text-align: center;
