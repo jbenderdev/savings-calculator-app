@@ -12,11 +12,12 @@ class PerCalcHtml extends React.Component {
                 <h3 className="tc f5 f4-l fw3 lh-copy dark-gray">Percent Calculator {calcId} HTML</h3>
                     <div>
                         <p className="f7 f6-ns fw3 ph2 dark-gray">
-                        {`<div id="PercentCalculator${calcId}" class="savings-calculator">
-                            <form>
+                        {`<div class="savings-calculator">
+                            <form id="PercentCalculator${calcId}">
                                 <h2 class="form-h2">${promptText}</h2>
                                     <p class="form-p">
                                         <input
+                                        id="perCalcInput${calcId}"
                                         class="percent-form-input"
                                         type = "number"
                                         step="0.01"
@@ -27,7 +28,9 @@ class PerCalcHtml extends React.Component {
                                     </p>
                                 <button class="form-button">See your savings!</button>
                             </form>
-                        </div>`}
+                            <p id="perCalcResultField${calcId}"></p>
+                        </div>`
+                        }
                         </p>
                     </div>
             </div>

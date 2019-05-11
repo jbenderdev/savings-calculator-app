@@ -12,12 +12,13 @@ class DolCalcHtml extends React.Component {
                 <h3 className="tc f5 f4-l fw3 lh-copy dark-gray">Dollar Calculator {calcId} HTML</h3>
                     <div>
                     <p className="f7 f6-ns fw3 ph2 dark-gray">
-                    {`<div id="DollarCalculator${calcId}" class="savings-calculator">
-                        <form>
+                    {`<div class="savings-calculator">
+                        <form id="DollarCalculator${calcId}">
                             <h2 class="form-h2">${promptText}</h2>
                                 <p class="form-p">
                                 <span class="position: relative; left: 1rem">$</span>
                                     <input
+                                    id="dolCalcInput${calcId}"
                                     class="dollar-form-input"
                                     type = "number"
                                     step="0.01"
@@ -27,6 +28,7 @@ class DolCalcHtml extends React.Component {
                                 </p>
                             <button class="form-button">See your savings!</button>
                         </form>
+                        <p id="dolCalcResultField${calcId}"></p>
                     </div>`}
                     </p>
                     </div>

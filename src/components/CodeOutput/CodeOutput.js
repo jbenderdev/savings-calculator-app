@@ -1,6 +1,8 @@
 import React from "react";
 import PerCalcHtml from "./PerCalcHtml";
 import DolCalcHtml from "./DolCalcHtml";
+import PerCalcJS from "./PerCalcJS";
+import DolCalcJS from "./DolCalcJS";
 
 class CodeOutput extends React.Component {
 
@@ -22,6 +24,28 @@ class CodeOutput extends React.Component {
                 id={id.name}
                 key={count}>
                     <DolCalcHtml
+                    dollarCalculator={this.props.dollarCalculators}
+                    calcId={count}
+                    />
+            </div>
+        )
+        const perCalcJSRender = this.props.percentCalculators.map((id, count) =>           
+            <div
+                className="center ph2 pv1 mb2 mh4 ba br2 bg-white-40 b--white-30 shadow-4 w-60"
+                id={id.name} 
+                key={count}>
+                    <PerCalcJS
+                    percentCalculator={this.props.percentCalculators}
+                    calcId={count}
+                    />
+            </div>
+        )
+        const dolCalcJSRender = this.props.dollarCalculators.map((id, count) =>           
+            <div
+                className="center ph2 pv1 mb2 mh4 ba br2 bg-white-40 b--white-30 shadow-4 w-60"
+                id={id.name} 
+                key={count}>
+                    <DolCalcJS
                     dollarCalculator={this.props.dollarCalculators}
                     calcId={count}
                     />
@@ -142,9 +166,11 @@ class CodeOutput extends React.Component {
                         .form-button {font-size:1.25rem}
                     }`}
                     </div>
-                <h3 className="tc f4 lh-copy fw3 white-90">Calculator JavaScript (I will be adding the React Component JS here soon!)</h3>
-                <div>
-                </div>
+                <h3 className="tc f4 lh-copy fw3 white-90">Calculator JS (paste directly into the last line of your HTML body):</h3>
+                    <div>
+                        {perCalcJSRender}
+                        {dolCalcJSRender}
+                    </div>
             </div>
         )
         }
